@@ -182,11 +182,11 @@ class Service {
      * @param {SearchRecord} searchRecord
      * @return {Promise<any>}
      */
-    search(searchRecord) {
+    search(searchRecord, searchOptions) {
         _assertConnection(this);
         const soapObj = searchRecord.getNode();
         const search = denodeify(this.config.client.search);
-        return search(soapObj);
+        return search(soapObj, searchOptions);
     }
 
     /**
@@ -195,13 +195,10 @@ class Service {
      * @param {number} pageIndex
      * @return {Promise<any>}
      */
-    searchMoreWithId(searchId, pageIndex) {
+    searchMoreWithId(searchId, pageIndex, searchOptions) {
         _assertConnection(this);
         const searchMoreWithId = denodeify(this.config.client.searchMoreWithId);
-        return searchMoreWithId({
-            pageIndex,
-            searchId,
-        });
+        return searchMoreWithId({ pageIndex, searchId }, searchOptions);
     }
 
     /**
