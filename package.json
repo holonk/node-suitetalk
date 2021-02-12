@@ -20,6 +20,10 @@
     "suitescript",
     "suitetalk"
   ],
+  "engines": {
+    "node": "~12.13.1",
+    "npm": "~6.12.1"
+  },
   "dependencies": {
     "adm-zip": "^0.4.13",
     "denodeify": "^1.2.1",
