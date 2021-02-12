@@ -1,5 +1,5 @@
 "use strict";
-
+const _ = require('lodash')
 const BaseObject = require("../../../baseObject");
 
 class SearchField extends BaseObject {
@@ -39,7 +39,7 @@ class SearchField extends BaseObject {
             throw new Error("search criteria operator not set");
         }
 
-        if (!this.searchValue) {
+        if (_.isNil(this.searchValue)) {
             throw new Error("search criteria searchValue not set");
         }
 
