@@ -51,7 +51,11 @@ class SearchField extends BaseObject {
             node[type]["$attributes"] = attributes;
         }
 
-        node[type]["platformCore:searchValue"] = this.searchValue;
+        if (_.isArray(this.searchValue)) {
+            node[type] = this.searchValue.map(value => ({ $attributes: attributes, 'platformCore:searchValue': value }))
+        } else {
+            node[type]['platformCore:searchValue'] = this.searchValue
+        }
         // node[type]["platformCore:searchValue"]["$attributes"] = {};
         // node[type]["platformCore:searchValue"]["$attributes"][this.field] = this.searchValue;
 
