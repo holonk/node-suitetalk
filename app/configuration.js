@@ -286,7 +286,8 @@ class Configuration {
 
             const soapOptions = {
                 attributesKey: "$attributes",
-                namespaceArrayElements: false
+                namespaceArrayElements: false,
+                ...config.soapOptions,
             };
 
             const account = config.account.replace("_", "-");
